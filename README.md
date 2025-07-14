@@ -1,7 +1,5 @@
-# Aws-Dynamodb-Env
-
-This project provisions an AWS DynamoDB Table using Terraform in a modular structure with CI/CD automation powered by GitHub Actions. It supports multi-environment deployments (dev, prod) and includes Infracost for cost estimation.
-
+# Aws-Elasticache-Cluster-Redis-Env
+This project provisions an **AWS ElastiCache Redis Cluster** using **Terraform** with a reusable module structure and automated CI/CD via **GitHub Actions**. It supports multiple environments (`dev`, `prod`) and stores Terraform state in an **S3 backend** .
  
 ## Prerequisites
  Create an S3 Bucket for Terraform State (AWS Console)
@@ -49,7 +47,7 @@ terraform/
       variables.tf
       terraform.tfvars
   modules/
-    dynamodb/
+    cache/
       main.tf
       outputs.tf
       variables.tf
@@ -60,7 +58,7 @@ terraform/
 
 ##  Required Secrets in GitHub
 
-In your GitHub repo, go to **Settings → Environments → prod and dev->add Environment secrets** and add:
+In your GitHub repo, go to **Settings → Environments → prod and dev , dev-plan and prod-plan->add Environment secrets** and add:
 
 AWS_ACCESS_KEY_ID
 
@@ -135,7 +133,7 @@ Waits for approval (based on environment reviewers)
 Once approved, resources are deployed
 
 # Outputs
-table_name
+cache_endpoint
 ##  Cleanup
 ```terminal
 terraform init
@@ -143,6 +141,6 @@ terraform destroy
 ```
 
 # References
-AWS DynamoDB table - Terraform Docs
+AWS Elasticache-Cluster-Redis - Terraform Docs
 
-https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dynamodb_table
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster
