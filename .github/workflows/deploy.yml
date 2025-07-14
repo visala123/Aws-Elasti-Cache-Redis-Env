@@ -1,4 +1,4 @@
-name: Terraform AWS DynamoDB CI/CD
+name: Terraform AWS Elasticache-Cluster-Redis CI/CD
 
 on:
   push:
